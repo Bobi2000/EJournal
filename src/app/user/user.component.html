@@ -1,0 +1,8 @@
+<div class="m-5 user p-4">
+  <app-student *ngIf="currentUser.type === 'Student'"></app-student>
+  <app-parent
+    *ngIf="currentUser.type === 'Parent'"
+    [currentParent]="currentUser"
+  ></app-parent>
+  <app-teacher *ngIf="currentUser.type === 'Teacher'"></app-teacher>
+</div>

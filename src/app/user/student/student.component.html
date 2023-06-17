@@ -1,0 +1,35 @@
+<div>
+  <h2>Ученик</h2>
+
+  <div class="card col-md-6 mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ currentStudent.user.name }}</h5>
+      <p class="card-text">Клас: {{ currentStudent.class.name }}</p>
+      <p class="card-text">Имейл: {{ currentStudent.user.email }}</p>
+      <p class="card-text">
+        Последна активност:
+        {{ currentStudent.user.lastModified | localDate : "mediumDate" }}
+      </p>
+    </div>
+  </div>
+  <br />
+  <h2>Оценки</h2>
+  <table class="table m-3">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Предмет</th>
+        <th scope="col">Оценка</th>
+        <th scope="col">Отсъствия</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mark of mockMarks">
+        <td></td>
+        <td>{{ mark.termsSubject.name }}</td>
+        <td>{{ mark.mark }}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

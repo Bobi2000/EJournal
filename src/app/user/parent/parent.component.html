@@ -1,0 +1,52 @@
+<h2>Родител</h2>
+<div class="card col-md-6 mb-3">
+  <div class="card-body">
+    <h5 class="card-title">{{ currentParent.name }}</h5>
+    <p class="card-text">Имейл: {{ currentParent.email }}</p>
+    <p class="card-text">
+      Последна активност:
+      {{ currentParent.lastModified | localDate : "mediumDate" }}
+    </p>
+  </div>
+</div>
+<br />
+<hr />
+<h2 *ngIf="children.length > 1">Деца</h2>
+<h2 *ngIf="children.length === 1">Дете</h2>
+<div *ngFor="let child of children">
+  <div class="card col-md-6 mb-3 mt-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ child.user.name }}</h5>
+      <p class="card-text">Клас: {{ child.class.name }}</p>
+      <p class="card-text">Имейл: {{ child.user.email }}</p>
+      <p class="card-text">
+        Последна активност:
+        {{ child.user.lastModified | localDate : "mediumDate" }}
+      </p>
+    </div>
+  </div>
+  <br />
+  <h2>Оценки</h2>
+  <table class="table m-3">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Предмет</th>
+        <th scope="col">Оценка</th>
+        <th scope="col">Отсъствия</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mark of mockMarks">
+        <td *ngIf="mark.student.id === child.id"></td>
+        <td *ngIf="mark.student.id === child.id">
+          {{ mark.termsSubject.name }}
+        </td>
+        <td *ngIf="mark.student.id === child.id">{{ mark.mark }}</td>
+        <td *ngIf="mark.student.id === child.id"></td>
+      </tr>
+    </tbody>
+  </table>
+  <hr />
+  <br />
+</div>
