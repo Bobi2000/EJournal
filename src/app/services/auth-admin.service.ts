@@ -3,16 +3,17 @@ import { UserService } from './user.service';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class AuthGuard {
+export class AuthAdminGuard {
+
   constructor(private userStateService: UserService, private router: Router) {}
 
   canActivate(): boolean {
-    const isAuthenticated = this.userStateService.isAuthenticated();
+    const isAdmin = this.userStateService.isAdmin();
 
-    if (!isAuthenticated) {
-      this.router.navigate(['/login']);
+    if (!isAdmin) {
+      this.router.navigate(['/home']);
       return false;
     }
 

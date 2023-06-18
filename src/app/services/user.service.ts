@@ -37,6 +37,16 @@ export class UserService {
     return false;
   }
 
+  public isAdmin(): boolean {
+    const userState = this.getUserState();
+
+    if (userState['type'] === 'Admin') {
+      return true;
+    }
+
+    return false;
+  }
+
   public logout(): void {
     localStorage.removeItem('userState');
     this.userSubject.next(null);

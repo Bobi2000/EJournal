@@ -90,25 +90,35 @@ export const mockUsers: UserModel[] = [
     lastModified: new Date(),
     createdAt: new Date(),
   },
+  {
+    id: 9,
+    name: 'Jojo',
+    type: UserType.ADMIN,
+    email: 'jojo.jojo@gmail.com',
+    password: 'jojo',
+    active: true,
+    lastModified: new Date(),
+    createdAt: new Date(),
+  },
 ];
 
 export const mockSchool: SchoolModel[] = [
   {
     id: 1,
     name: 'Петър Берон',
-    address: '',
+    address: 'address',
     principal: mockUsers[3],
   },
   {
-    id: 1,
+    id: 2,
     name: 'ППМГ',
-    address: '',
+    address: 'address',
     principal: mockUsers[4],
   },
   {
-    id: 1,
+    id: 3,
     name: 'Езикова гимназия',
-    address: '',
+    address: 'address',
     principal: mockUsers[5],
   },
 ];
