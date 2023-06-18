@@ -1,0 +1,7 @@
+{
+  "/v1": {
+    "target": "http://localhost:7045",
+    "secure": false
+  },
+  "logLevel": "debug"
+}
