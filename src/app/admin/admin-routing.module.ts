@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AdminComponent } from './admin.component';
 import { SchoolEditComponent } from './school-edit/school-edit.component';
+import { SchoolViewComponent } from './school-view/school-view.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
     component: AdminComponent,
   },
   { path: 'school-edit/:id', component: SchoolEditComponent },
+  { path: 'school-view/:id', component: SchoolViewComponent },
 ];
 
 @NgModule({

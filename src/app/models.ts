@@ -15,7 +15,7 @@ export interface SchoolModel {
   id: number;
   name: string;
   address: string;
-  principal: UserModel;
+  principalId: number;
 }
 
 export interface MarksModel {

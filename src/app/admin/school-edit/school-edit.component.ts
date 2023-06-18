@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { mockSchool } from 'src/app/mocks.model';
+
 import { SchoolModel } from 'src/app/models';
+import { SchoolService } from 'src/app/services/school.service';
 
 @Component({
   selector: 'app-school-edit',
@@ -9,30 +10,32 @@ import { SchoolModel } from 'src/app/models';
   styleUrls: ['./school-edit.component.scss'],
 })
 export class SchoolEditComponent {
-  school: SchoolModel;
+  school: SchoolModel = {
+    id: 0,
+    name: '',
+    address: '',
+    principalId: 0
+  };
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private schoolService: SchoolService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     const schoolId = +this.route.snapshot.paramMap.get('id');
-    console.log(schoolId);
-    this.school = this.getSchoolById(schoolId);
-    console.log(this.school);
-  }
-
-  private getSchoolById(id: number): SchoolModel {
-    return mockSchool.find((school) => school.id === id);
+    this.schoolService.getSchool(schoolId).subscribe((school) => {
+      this.school = school;
+    });
   }
 
   saveChanges(): void {
-    console.log('Saving changes:', this.school);
-
-    mockSchool.map((school) => {
-      if (school.id === school.id) {
-        return this.school;
-      }
-      return school;
-    });
+    this.schoolService
+      .editSchool(this.school)
+      .subscribe((school: SchoolModel) => {
+        this.school = school;
+      });
 
     this.router.navigate(['/admin']);
   }

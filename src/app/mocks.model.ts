@@ -107,19 +107,19 @@ export const mockSchool: SchoolModel[] = [
     id: 1,
     name: 'Петър Берон',
     address: 'address',
-    principal: mockUsers[3],
+    principalId: 1,
   },
   {
     id: 2,
     name: 'ППМГ',
     address: 'address',
-    principal: mockUsers[4],
+    principalId: 1,
   },
   {
     id: 3,
     name: 'Езикова гимназия',
     address: 'address',
-    principal: mockUsers[5],
+    principalId: 1,
   },
 ];
 
