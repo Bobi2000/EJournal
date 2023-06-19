@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>School Details</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Principal ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ school?.id }}</td>
+        <td>{{ school?.name }}</td>
+        <td>{{ school?.address }}</td>
+        <td>{{ school?.principalId }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Principal Details</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ principal?.id }}</td>
+        <td>{{ principal?.name }}</td>
+        <td>{{ principal?.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

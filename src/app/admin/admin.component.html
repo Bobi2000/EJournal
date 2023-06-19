@@ -15,8 +15,15 @@
               <strong>Address:</strong> {{ school.address }}
             </p>
             <p class="card-text">
-              <strong>Principal:</strong> {{ school.principal.name }}
+              <!-- <strong>Principal:</strong> {{ school.principal.name }} -->
             </p>
+            <button
+              class="btn btn-secondary"
+              [routerLink]="['/admin/school-view', school.id]"
+            >
+              View
+            </button>
+            &nbsp;&nbsp;
             <button
               class="btn btn-primary"
               [routerLink]="['/admin/school-edit', school.id]"
