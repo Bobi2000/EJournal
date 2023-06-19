@@ -6,10 +6,6 @@
       <h5 class="card-title">{{ currentStudent.user.name }}</h5>
       <p class="card-text">Клас: {{ currentStudent.class.name }}</p>
       <p class="card-text">Имейл: {{ currentStudent.user.email }}</p>
-      <p class="card-text">
-        Последна активност:
-        {{ currentStudent.user.lastModified | localDate : "mediumDate" }}
-      </p>
     </div>
   </div>
   <br />
@@ -26,7 +22,7 @@
     <tbody>
       <tr *ngFor="let mark of mockMarks">
         <td></td>
-        <td>{{ mark.termsSubject.name }}</td>
+        <td>{{ mark.termsSubject.subject.name }}</td>
         <td>{{ mark.mark }}</td>
         <td></td>
       </tr>

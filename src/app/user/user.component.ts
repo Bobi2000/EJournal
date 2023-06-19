@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { StudentModel, TermsModel, UserModel, UserType } from '../models';
+import { UserService } from '../services/user.service';
 import { mockUsers } from '../mocks.model';
-import { UserModel, UserType } from '../models';
 
 @Component({
   selector: 'app-user',
@@ -15,12 +16,13 @@ export class UserComponent implements OnInit {
     type: UserType.PARENT,
     email: 'mariya.petrova@mail.com',
     password: 'test',
-    active: true,
-    lastModified: new Date(),
-    createdAt: new Date('2021-09-12'),
   };
+  // terms: TermsModel[] = [];
+  // children: StudentModel[] = [];
 
-  constructor(private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private activatedRoute: ActivatedRoute // private userService: UserService
+  ) {}
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -29,5 +31,22 @@ export class UserComponent implements OnInit {
         this.currentUser = data;
       }
     });
+    // this.userService.getUserById(Number(id)).subscribe((user) => {
+    //   this.currentUser = user;
+    //   if (this.currentUser.type === UserType.TEACHER) {
+    //     // this.userService.getAllTermsSubjects().subscribe((terms) => {
+    //     //   terms.find((term) => {
+    //     //     if (
+    //     //       term.user.id === this.currentUser.id &&
+    //     //       !this.terms.includes(term.term)
+    //     //     ) {
+    //     //       this.mockTerms.push(dataTermsSubject.term);
+    //     //     }
+    //     //   });
+    //     // this.terms = [...terms];
+    //     // });
+    //   } else if (this.currentUser.type === UserType.PARENT) {
+    //   }
+    // });
   }
 }

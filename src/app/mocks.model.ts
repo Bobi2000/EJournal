@@ -4,7 +4,9 @@ import {
   SchoolModel,
   StudentModel,
   StudentParentsModel,
+  SubjectModel,
   TermsModel,
+  TermsSubjectModel,
   UserModel,
   UserType,
 } from './models';
@@ -16,9 +18,6 @@ export const mockUsers: UserModel[] = [
     type: UserType.STUDENT,
     email: 'mariya.petrova@mail.com',
     password: 'test',
-    active: true,
-    lastModified: new Date(),
-    createdAt: new Date('2021-09-12'),
   },
   {
     id: 2,
@@ -26,9 +25,6 @@ export const mockUsers: UserModel[] = [
     type: UserType.STUDENT,
     email: 'teodor.popov@mail.com',
     password: 'test',
-    active: true,
-    lastModified: new Date(),
-    createdAt: new Date('2022-04-09'),
   },
   {
     id: 3,
@@ -36,9 +32,6 @@ export const mockUsers: UserModel[] = [
     type: UserType.STUDENT,
     email: 'stefan.ivanov@mail.com',
     password: 'test',
-    active: false,
-    lastModified: new Date(),
-    createdAt: new Date(),
   },
   {
     id: 4,
@@ -46,9 +39,6 @@ export const mockUsers: UserModel[] = [
     type: UserType.PRINCIPAL,
     email: 'petya.petkova@mail.com',
     password: 'test',
-    active: false,
-    lastModified: new Date(),
-    createdAt: new Date(),
   },
   {
     id: 5,
@@ -56,9 +46,6 @@ export const mockUsers: UserModel[] = [
     type: UserType.PRINCIPAL,
     email: 'ivan.yordanov@mail.com',
     password: 'test',
-    active: false,
-    lastModified: new Date(),
-    createdAt: new Date(),
   },
   {
     id: 6,
@@ -66,9 +53,6 @@ export const mockUsers: UserModel[] = [
     type: UserType.PRINCIPAL,
     email: 'petyo.peev@mail.com',
     password: 'test',
-    active: false,
-    lastModified: new Date(),
-    createdAt: new Date(),
   },
   {
     id: 7,
@@ -76,9 +60,6 @@ export const mockUsers: UserModel[] = [
     type: UserType.PARENT,
     email: 'radostina.petrova@mail.com',
     password: 'test',
-    active: false,
-    lastModified: new Date(),
-    createdAt: new Date(),
   },
   {
     id: 8,
@@ -86,9 +67,6 @@ export const mockUsers: UserModel[] = [
     type: UserType.PARENT,
     email: 'galina.peeva@mail.com',
     password: 'test',
-    active: false,
-    lastModified: new Date(),
-    createdAt: new Date(),
   },
   {
     id: 9,
@@ -96,9 +74,13 @@ export const mockUsers: UserModel[] = [
     type: UserType.ADMIN,
     email: 'jojo.jojo@gmail.com',
     password: 'jojo',
-    active: true,
-    lastModified: new Date(),
-    createdAt: new Date(),
+  },
+  {
+    id: 10,
+    name: 'Test Test',
+    type: UserType.TEACHER,
+    email: 'test.test@gmail.com',
+    password: 'test',
   },
 ];
 
@@ -141,7 +123,7 @@ export const mockClasses: ClassModel[] = [
   },
 ];
 
-export const mockTerms: TermsModel[] = [
+export const mockSubjects: SubjectModel[] = [
   {
     id: 1,
     name: 'Математика',
@@ -156,6 +138,24 @@ export const mockTerms: TermsModel[] = [
     id: 3,
     name: 'Английски език',
     abbreviation: 'АЕ',
+  },
+];
+
+export const mockTerms: TermsModel[] = [
+  {
+    id: 1,
+    name: 'есен 2022/2023',
+    abbreviation: '',
+  },
+  {
+    id: 2,
+    name: 'пролет 2022/2023',
+    abbreviation: '',
+  },
+  {
+    id: 3,
+    name: 'есен 2023/2024',
+    abbreviation: '',
   },
 ];
 
@@ -180,33 +180,6 @@ export const mockStudents: StudentModel[] = [
   },
 ];
 
-export const mockMarks: MarksModel[] = [
-  {
-    id: 1,
-    student: mockStudents[0],
-    mark: 6,
-    termsSubject: mockTerms[0],
-  },
-  {
-    id: 2,
-    student: mockStudents[0],
-    mark: 5,
-    termsSubject: mockTerms[0],
-  },
-  {
-    id: 3,
-    student: mockStudents[1],
-    mark: 4,
-    termsSubject: mockTerms[2],
-  },
-  {
-    id: 4,
-    student: mockStudents[2],
-    mark: 4,
-    termsSubject: mockTerms[2],
-  },
-];
-
 export const mockStudentParents: StudentParentsModel[] = [
   {
     id: 1,
@@ -222,5 +195,63 @@ export const mockStudentParents: StudentParentsModel[] = [
     id: 1,
     student: mockStudents[2],
     parent: mockUsers[7],
+  },
+];
+
+export const mockTermsSubject: TermsSubjectModel[] = [
+  {
+    id: 1,
+    term: mockTerms[0],
+    subject: mockSubjects[0],
+    user: mockUsers[9],
+    class: mockClasses[0],
+  },
+  {
+    id: 2,
+    term: mockTerms[0],
+    subject: mockSubjects[1],
+    user: mockUsers[9],
+    class: mockClasses[0],
+  },
+  {
+    id: 3,
+    term: mockTerms[1],
+    subject: mockSubjects[2],
+    user: mockUsers[9],
+    class: mockClasses[0],
+  },
+  {
+    id: 4,
+    term: mockTerms[2],
+    subject: mockSubjects[0],
+    user: mockUsers[9],
+    class: mockClasses[1],
+  },
+];
+
+export const mockMarks: MarksModel[] = [
+  {
+    id: 1,
+    student: mockStudents[0],
+    mark: 6,
+    termsSubject: mockTermsSubject[0],
+  },
+  {
+    id: 2,
+    student: mockStudents[0],
+    mark: 5,
+    termsSubject: mockTermsSubject[0],
+  },
+  {
+    id: 3,
+    student: mockStudents[1],
+    mark: 4,
+    termsSubject: mockTermsSubject[2],
+  },
+  {
+    id: 4,
+    student: mockStudents[2],
+    mark: 4,
+    termsSubject: mockTermsSubject[2],
   },
 ];

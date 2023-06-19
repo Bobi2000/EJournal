@@ -4,5 +4,5 @@
     *ngIf="currentUser.type === 'Parent'"
     [currentParent]="currentUser"
   ></app-parent>
-  <app-teacher *ngIf="currentUser.type === 'Teacher'"></app-teacher>
+  <app-teacher [currentTeacher]="currentUser" *ngIf="currentUser.type === 'Teacher'"></app-teacher>
 </div>

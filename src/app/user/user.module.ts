@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 
 import { UserRoutingModule } from './user-routing.module';
-import { StudentComponent } from './student/student.component';
 import { ParentComponent } from './parent/parent.component';
 import { TeacherComponent } from './teacher/teacher.component';
 import { LocalDatePipe } from './localDate.pipe';
 import { CommonModule } from '@angular/common';
 import { UserComponent } from './user.component';
+import { FormsModule } from '@angular/forms';
+import { StudentComponent } from './student/student.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,6 @@ import { UserComponent } from './user.component';
     TeacherComponent,
     LocalDatePipe,
   ],
-  imports: [UserRoutingModule, CommonModule],
+  imports: [UserRoutingModule, CommonModule, FormsModule],
 })
 export class UserModule {}

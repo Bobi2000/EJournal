@@ -22,7 +22,13 @@ export interface MarksModel {
   id: number;
   student: StudentModel;
   mark: number;
-  termsSubject: TermsModel;
+  termsSubject: TermsSubjectModel;
+}
+
+export interface SubjectModel {
+  id: number;
+  name: string;
+  abbreviation: string;
 }
 
 export interface TermsModel {
@@ -37,15 +43,20 @@ export interface UserModel {
   type: UserType;
   email: string;
   password: string;
-  active: boolean;
-  lastModified: Date;
-  createdAt: Date;
 }
 
 export interface StudentParentsModel {
   id: number;
   student: StudentModel;
   parent: UserModel;
+}
+
+export interface TermsSubjectModel {
+  id: number;
+  term: TermsModel;
+  subject: SubjectModel;
+  user: UserModel;
+  class: ClassModel;
 }
 
 export enum UserType {

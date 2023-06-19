@@ -1,13 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MarksModel, StudentModel } from '../../models';
-import {
-  mockClasses,
-  mockMarks,
-  mockStudents,
-  mockUsers,
-} from '../../mocks.model';
 import { ActivatedRoute } from '@angular/router';
 import { StudentService } from './student.service';
+import { mockMarks, mockStudents } from '../../mocks.model';
 
 @Component({
   selector: 'app-student',
@@ -15,12 +10,7 @@ import { StudentService } from './student.service';
   styleUrls: ['./student.component.css'],
 })
 export class StudentComponent implements OnInit {
-  currentStudent: StudentModel = {
-    id: 1,
-    egn: '0147236956',
-    class: mockClasses[0],
-    user: mockUsers[0],
-  };
+  currentStudent: StudentModel;
   mockMarks: MarksModel[] = [];
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,7 +19,9 @@ export class StudentComponent implements OnInit {
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    // this.studentService.getStudentById(Number(id));
+    // this.studentService.getStudentById(Number(id)).subscribe((student) => {
+    //   this.currentStudent = student;
+    // });
     mockStudents.forEach((data) => {
       if (data.id === Number(id)) {
         this.currentStudent = data;

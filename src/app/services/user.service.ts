@@ -1,5 +1,13 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import {
+  StudentModel,
+  TermsModel,
+  TermsSubjectModel,
+  UserModel,
+} from '../models';
+import { mockTermsSubject } from '../mocks.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,11 +16,23 @@ export class UserService {
   private userSubject = new BehaviorSubject<any>(null);
   public user$ = this.userSubject.asObservable();
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
     const storedUserState = localStorage.getItem('userState');
     const initialState = storedUserState ? JSON.parse(storedUserState) : null;
     this.userSubject.next(initialState);
   }
+
+  getUserById(id: number): Observable<UserModel> {
+    return this.httpClient.get<UserModel>('v1/users/' + id);
+  }
+
+  getAllTerms(): Observable<TermsModel[]> {
+    return this.httpClient.get<TermsModel[]>('v1/terms');
+  }
+
+  // getAllSubjectsByTermId(): Observable<TermsModel> {
+  //   return this.httpClient.get<TermsModel[]>('v1/terms');
+  // }
 
   private saveUserState(userState: any): void {
     localStorage.setItem('userState', JSON.stringify(userState));
