@@ -1,1 +1,43 @@
-<p>teacher works!</p>
+<div>
+  <h2>Преподавател</h2>
+  <div class="card col-md-6 mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ currentTeacher.name }}</h5>
+      <p class="card-text">Имейл: {{ currentTeacher.email }}</p>
+    </div>
+  </div>
+  <br />
+
+  <div class="float-right">
+    <select
+      name="terms"
+      id="terms"
+      [(ngModel)]="selectedTerm"
+      (ngModelChange)="onTermsChange()"
+    >
+      <option *ngFor="let mock of mockTerms">
+        {{ mock.name }}
+      </option>
+    </select>
+  </div>
+
+  <table class="table m-3 mt-5">
+    <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Предмет</th>
+      <th scope="col">Клас</th>
+      <th scope="col">Ученици</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let mock of mockTermsSubject">
+      <td></td>
+      <td>{{ mock.subject.name }}</td>
+      <td>{{ mock.class.name }}</td>
+      <td></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -10,6 +10,6 @@ export class StudentService {
   constructor(private httpClient: HttpClient) {}
 
   getStudentById(id: number): Observable<StudentModel> {
-    return this.httpClient.get<StudentModel>('student/' + id);
+    return this.httpClient.get<StudentModel>('v1/students/' + id);
   }
 }
