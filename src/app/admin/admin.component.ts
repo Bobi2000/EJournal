@@ -1,7 +1,6 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { mockSchool } from '../mocks.model';
-import { AdminService } from '../services/admin.service';
-import { SchoolModel, UserModel } from '../models';
+import { Component, OnInit } from '@angular/core';
+
+import { SchoolModel } from '../models';
 import { SchoolService } from '../services/school.service';
 
 @Component({
@@ -17,7 +16,12 @@ export class AdminComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.schoolService.getSchools().subscribe((schools: SchoolModel[]) => {
       this.schools = schools;
-      console.log(schools);
+    });
+  }
+
+  public deleteSchool(id: number): void {
+    this.schoolService.deleteSchool(id).subscribe(() => {
+      location.reload();
     });
   }
 }

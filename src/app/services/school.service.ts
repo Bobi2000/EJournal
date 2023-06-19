@@ -17,7 +17,15 @@ export class SchoolService {
     return this.http.get<SchoolModel[]>('v1/schools');
   }
 
+  public postSchool(body: SchoolModel): Observable<SchoolModel> {
+    return this.http.post<SchoolModel>(`v1/schools`, body);
+  }
+
   public editSchool(body: SchoolModel): Observable<SchoolModel> {
     return this.http.put<SchoolModel>(`v1/schools/${body.id}`, body);
+  }
+
+  public deleteSchool(id: number): Observable<any> {
+    return this.http.delete<any>(`v1/schools/${id}`);
   }
 }
