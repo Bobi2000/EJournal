@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { SchoolModel } from 'src/app/models';
+import { SchoolModel, UserModell } from 'src/app/models';
 import { SchoolService } from 'src/app/services/school.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-school-edit',
@@ -14,19 +15,27 @@ export class SchoolEditComponent {
     id: 0,
     name: '',
     address: '',
-    principalId: 0
+    principalId: 0,
   };
+  principals: UserModell[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private schoolService: SchoolService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
     const schoolId = +this.route.snapshot.paramMap.get('id');
     this.schoolService.getSchool(schoolId).subscribe((school) => {
       this.school = school;
+    });
+
+    this.userService.getAllUsers().subscribe((users: UserModell[]) => {
+      this.principals = users.filter((user) =>
+        user.roles.includes('PRINCIPAL')
+      );
     });
   }
 
@@ -37,6 +46,6 @@ export class SchoolEditComponent {
         this.school = school;
       });
 
-    this.router.navigate(['/admin']);
+    this.router.navigate([`/admin/school-view/${this.school.id}`]);
   }
 }
