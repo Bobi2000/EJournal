@@ -17,7 +17,7 @@ export class SchoolViewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private schoolService: SchoolService,
-    private adminService: AdminService,
+    private adminService: AdminService
   ) {}
 
   ngOnInit(): void {
@@ -25,12 +25,12 @@ export class SchoolViewComponent implements OnInit {
 
     this.schoolService.getSchool(schoolId).subscribe((school: SchoolModel) => {
       this.school = school;
-      console.log(school);
 
-      this.adminService.getPrincipalById(school.principalId).subscribe((principal) => {
-        this.principal = principal;
-        console.log(principal);
-      });
+      this.adminService
+        .getPrincipalById(school.principalId)
+        .subscribe((principal) => {
+          this.principal = principal;
+        });
     });
   }
 }

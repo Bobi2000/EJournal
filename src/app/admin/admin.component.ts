@@ -9,6 +9,7 @@ import { SchoolService } from '../services/school.service';
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
+
   public schools = [];
 
   constructor(private schoolService: SchoolService) {}

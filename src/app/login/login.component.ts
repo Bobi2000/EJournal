@@ -19,7 +19,7 @@ export class LoginComponent {
 
   constructor(private router: Router, private user: UserService) {}
 
-  onLogin() {
+  public onLogin(): void {
     var curUser = mockUsers.filter((user) => {
       if (user.email === this.loginForm.value.email) {
         return user;

@@ -45,6 +45,14 @@ export interface UserModel {
   password: string;
 }
 
+export interface UserModell {
+  id: number;
+  name: string;
+  roles: string[];
+  email: string;
+  password: string;
+}
+
 export interface StudentParentsModel {
   id: number;
   student: StudentModel;

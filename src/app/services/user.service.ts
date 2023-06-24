@@ -6,6 +6,7 @@ import {
   TermsModel,
   TermsSubjectModel,
   UserModel,
+  UserModell,
 } from '../models';
 import { mockTermsSubject } from '../mocks.model';
 
@@ -20,6 +21,10 @@ export class UserService {
     const storedUserState = localStorage.getItem('userState');
     const initialState = storedUserState ? JSON.parse(storedUserState) : null;
     this.userSubject.next(initialState);
+  }
+
+  getAllUsers(): Observable<UserModell[]> {
+    return this.httpClient.get<UserModell[]>('v1/users');
   }
 
   getUserById(id: number): Observable<UserModel> {

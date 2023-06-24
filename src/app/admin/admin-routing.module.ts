@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { SchoolEditComponent } from './school-edit/school-edit.component';
 import { SchoolViewComponent } from './school-view/school-view.component';
+import { SchoolAddComponent } from './school-add/school-add.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
   },
   { path: 'school-edit/:id', component: SchoolEditComponent },
   { path: 'school-view/:id', component: SchoolViewComponent },
+  { path: 'school-add', component: SchoolAddComponent },
 ];
 
 @NgModule({
