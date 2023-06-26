@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
-import { SubNavbarComponent } from './components/sub-navbar/sub-navbar.component';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],

@@ -24,15 +24,23 @@ export class UserService {
   }
 
   getAllUsers(): Observable<UserModell[]> {
-    return this.httpClient.get<UserModell[]>('v1/users');
+    return this.httpClient.get<UserModell[]>('/v1/users');
   }
 
-  getUserById(id: number): Observable<UserModel> {
-    return this.httpClient.get<UserModel>('v1/users/' + id);
+  getUserById(id: number): Observable<UserModell> {
+    return this.httpClient.get<UserModell>('/v1/users/' + id);
+  }
+
+  postUser(body: any): Observable<any> {
+    return this.httpClient.post<any>('/v1/users', body);
   }
 
   getAllTerms(): Observable<TermsModel[]> {
     return this.httpClient.get<TermsModel[]>('v1/terms');
+  }
+
+  deleteUser(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`/v1/users/${id}`);
   }
 
   // getAllSubjectsByTermId(): Observable<TermsModel> {
