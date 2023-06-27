@@ -10,6 +10,8 @@ import { SchoolAddComponent } from './school-add/school-add.component';
 import { SubNavbarComponent } from '../components/sub-navbar/sub-navbar.component';
 import { UsersViewComponent } from './users-view/users-view.component';
 import { UsersEditComponent } from './users-edit/users-edit.component';
+import { SubjectsViewComponent } from './subjects-view/subjects-view.component';
+import { SubjectsAddComponent } from './subjects-add/subjects-add.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { UsersEditComponent } from './users-edit/users-edit.component';
     SchoolAddComponent,
     SubNavbarComponent,
     UsersViewComponent,
-    UsersEditComponent
+    UsersEditComponent,
+    SubjectsViewComponent,
+    SubjectsAddComponent,
   ],
   imports: [CommonModule, AdminRoutingModule, FormsModule, ReactiveFormsModule],
 })

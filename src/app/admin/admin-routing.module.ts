@@ -7,6 +7,8 @@ import { SchoolViewComponent } from './school-view/school-view.component';
 import { SchoolAddComponent } from './school-add/school-add.component';
 import { UsersViewComponent } from './users-view/users-view.component';
 import { UsersEditComponent } from './users-edit/users-edit.component';
+import { SubjectsViewComponent } from './subjects-view/subjects-view.component';
+import { SubjectsAddComponent } from './subjects-add/subjects-add.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'school-add', component: SchoolAddComponent },
   { path: 'users-view', component: UsersViewComponent },
   { path: 'user-edit/:id', component: UsersEditComponent },
+  { path: 'subjects-view', component: SubjectsViewComponent },
+  { path: 'subject-add', component: SubjectsAddComponent },
 ];
 
 @NgModule({
