@@ -15,8 +15,8 @@
       [(ngModel)]="selectedTerm"
       (ngModelChange)="onTermsChange()"
     >
-      <option *ngFor="let mock of mockTerms">
-        {{ mock.name }}
+      <option *ngFor="let term of terms">
+        {{ term.name }}
       </option>
     </select>
   </div>
@@ -31,11 +31,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let mock of mockTermsSubject">
+    <tr *ngFor="let schoolClass of schoolClasses">
       <td></td>
-      <td>{{ mock.subject.name }}</td>
-      <td>{{ mock.class.name }}</td>
-      <td></td>
+      <td>{{ schoolClass.subjects | json }}</td>
+      <td>{{schoolClass.name}}</td>
+      <td >{{ schoolClass.students | json }}</td>
     </tr>
     </tbody>
   </table>

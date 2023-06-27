@@ -7,121 +7,131 @@ import {
   SubjectModel,
   TermsModel,
   TermsSubjectModel,
-  UserModel,
+  UserModell,
   UserType,
 } from './models';
 
-export const mockUsers: UserModel[] = [
+export const mockUsers: UserModell[] = [
   {
     id: 1,
     name: 'Мария Петрова',
-    type: UserType.STUDENT,
+    roles: [UserType.STUDENT],
     email: 'mariya.petrova@mail.com',
     password: 'test',
+    children: [],
   },
   {
     id: 2,
     name: 'Teodor Popov',
-    type: UserType.STUDENT,
+    roles: [UserType.STUDENT],
     email: 'teodor.popov@mail.com',
     password: 'test',
+    children: [],
   },
   {
     id: 3,
     name: 'Stefan Ivanov',
-    type: UserType.STUDENT,
+    roles: [UserType.STUDENT],
     email: 'stefan.ivanov@mail.com',
     password: 'test',
+    children: [],
   },
   {
     id: 4,
     name: 'Petya Petkova',
-    type: UserType.PRINCIPAL,
+    roles: [UserType.PRINCIPAL],
     email: 'petya.petkova@mail.com',
     password: 'test',
+    children: [],
   },
   {
     id: 5,
     name: 'Ivan Yordanov',
-    type: UserType.PRINCIPAL,
+    roles: [UserType.PRINCIPAL],
     email: 'ivan.yordanov@mail.com',
     password: 'test',
+    children: [],
   },
   {
     id: 6,
     name: 'Petyo Peev',
-    type: UserType.PRINCIPAL,
+    roles: [UserType.PRINCIPAL],
     email: 'petyo.peev@mail.com',
     password: 'test',
+    children: [],
   },
   {
     id: 7,
     name: 'Radostina Petrova',
-    type: UserType.PARENT,
+    roles: [UserType.PARENT, UserType.TEACHER],
     email: 'radostina.petrova@mail.com',
     password: 'test',
+    children: [],
   },
   {
     id: 8,
     name: 'Galina Peeva',
-    type: UserType.PARENT,
+    roles: [UserType.PARENT],
     email: 'galina.peeva@mail.com',
     password: 'test',
+    children: [],
   },
   {
     id: 9,
     name: 'Jojo',
-    type: UserType.ADMIN,
+    roles: [UserType.ADMIN],
     email: 'jojo.jojo@gmail.com',
     password: 'jojo',
+    children: [],
   },
   {
     id: 10,
     name: 'Test Test',
-    type: UserType.TEACHER,
+    roles: [UserType.TEACHER],
     email: 'test.test@gmail.com',
     password: 'test',
+    children: [],
   },
 ];
 
-export const mockSchool: SchoolModel[] = [
-  {
-    id: 1,
-    name: 'Петър Берон',
-    address: 'address',
-    principalId: 1,
-  },
-  {
-    id: 2,
-    name: 'ППМГ',
-    address: 'address',
-    principalId: 1,
-  },
-  {
-    id: 3,
-    name: 'Езикова гимназия',
-    address: 'address',
-    principalId: 1,
-  },
-];
-
-export const mockClasses: ClassModel[] = [
-  {
-    id: 1,
-    name: '8a',
-    school: mockSchool[0],
-  },
-  {
-    id: 2,
-    name: '10б',
-    school: mockSchool[1],
-  },
-  {
-    id: 3,
-    name: '12г',
-    school: mockSchool[2],
-  },
-];
+// export const mockSchool: SchoolModel[] = [
+//   {
+//     id: 1,
+//     name: 'Петър Берон',
+//     address: 'address',
+//     principalId: 1,
+//   },
+//   {
+//     id: 2,
+//     name: 'ППМГ',
+//     address: 'address',
+//     principalId: 1,
+//   },
+//   {
+//     id: 3,
+//     name: 'Езикова гимназия',
+//     address: 'address',
+//     principalId: 1,
+//   },
+// ];
+//
+// export const mockClasses: ClassModel[] = [
+//   {
+//     id: 1,
+//     name: '8a',
+//     school: mockSchool[0],
+//   },
+//   {
+//     id: 2,
+//     name: '10б',
+//     school: mockSchool[1],
+//   },
+//   {
+//     id: 3,
+//     name: '12г',
+//     school: mockSchool[2],
+//   },
+// ];
 
 export const mockSubjects: SubjectModel[] = [
   {
@@ -159,99 +169,99 @@ export const mockTerms: TermsModel[] = [
   },
 ];
 
-export const mockStudents: StudentModel[] = [
-  {
-    id: 1,
-    egn: '0147236956',
-    class: mockClasses[0],
-    user: mockUsers[0],
-  },
-  {
-    id: 2,
-    egn: '9912034526',
-    class: mockClasses[1],
-    user: mockUsers[1],
-  },
-  {
-    id: 3,
-    egn: '9803075689',
-    class: mockClasses[2],
-    user: mockUsers[2],
-  },
-];
+// export const mockStudents: StudentModel[] = [
+//   {
+//     id: 1,
+//     egn: '0147236956',
+//     class: mockClasses[0],
+//     user: mockUsers[0],
+//   },
+//   {
+//     id: 2,
+//     egn: '9912034526',
+//     class: mockClasses[1],
+//     user: mockUsers[1],
+//   },
+//   {
+//     id: 3,
+//     egn: '9803075689',
+//     class: mockClasses[2],
+//     user: mockUsers[2],
+//   },
+// ];
 
-export const mockStudentParents: StudentParentsModel[] = [
-  {
-    id: 1,
-    student: mockStudents[0],
-    parent: mockUsers[6],
-  },
-  {
-    id: 2,
-    student: mockStudents[1],
-    parent: mockUsers[6],
-  },
-  {
-    id: 1,
-    student: mockStudents[2],
-    parent: mockUsers[7],
-  },
-];
+// export const mockStudentParents: StudentParentsModel[] = [
+//   {
+//     id: 1,
+//     student: mockStudents[0],
+//     parent: mockUsers[6],
+//   },
+//   {
+//     id: 2,
+//     student: mockStudents[1],
+//     parent: mockUsers[6],
+//   },
+//   {
+//     id: 1,
+//     student: mockStudents[2],
+//     parent: mockUsers[7],
+//   },
+// ];
 
-export const mockTermsSubject: TermsSubjectModel[] = [
-  {
-    id: 1,
-    term: mockTerms[0],
-    subject: mockSubjects[0],
-    user: mockUsers[9],
-    class: mockClasses[0],
-  },
-  {
-    id: 2,
-    term: mockTerms[0],
-    subject: mockSubjects[1],
-    user: mockUsers[9],
-    class: mockClasses[0],
-  },
-  {
-    id: 3,
-    term: mockTerms[1],
-    subject: mockSubjects[2],
-    user: mockUsers[9],
-    class: mockClasses[0],
-  },
-  {
-    id: 4,
-    term: mockTerms[2],
-    subject: mockSubjects[0],
-    user: mockUsers[9],
-    class: mockClasses[1],
-  },
-];
+// export const mockTermsSubject: TermsSubjectModel[] = [
+//   {
+//     id: 1,
+//     term: mockTerms[0],
+//     subject: mockSubjects[0],
+//     user: mockUsers[9],
+//     class: mockClasses[0],
+//   },
+//   {
+//     id: 2,
+//     term: mockTerms[0],
+//     subject: mockSubjects[1],
+//     user: mockUsers[9],
+//     class: mockClasses[0],
+//   },
+//   {
+//     id: 3,
+//     term: mockTerms[1],
+//     subject: mockSubjects[2],
+//     user: mockUsers[9],
+//     class: mockClasses[0],
+//   },
+//   {
+//     id: 4,
+//     term: mockTerms[2],
+//     subject: mockSubjects[0],
+//     user: mockUsers[9],
+//     class: mockClasses[1],
+//   },
+// ];
 
-export const mockMarks: MarksModel[] = [
-  {
-    id: 1,
-    student: mockStudents[0],
-    mark: 6,
-    termsSubject: mockTermsSubject[0],
-  },
-  {
-    id: 2,
-    student: mockStudents[0],
-    mark: 5,
-    termsSubject: mockTermsSubject[0],
-  },
-  {
-    id: 3,
-    student: mockStudents[1],
-    mark: 4,
-    termsSubject: mockTermsSubject[2],
-  },
-  {
-    id: 4,
-    student: mockStudents[2],
-    mark: 4,
-    termsSubject: mockTermsSubject[2],
-  },
-];
+// export const mockMarks: MarksModel[] = [
+//   {
+//     id: 1,
+//     student: mockStudents[0],
+//     mark: 6,
+//     termsSubject: mockTermsSubject[0],
+//   },
+//   {
+//     id: 2,
+//     student: mockStudents[0],
+//     mark: 5,
+//     termsSubject: mockTermsSubject[0],
+//   },
+//   {
+//     id: 3,
+//     student: mockStudents[1],
+//     mark: 4,
+//     termsSubject: mockTermsSubject[2],
+//   },
+//   {
+//     id: 4,
+//     student: mockStudents[2],
+//     mark: 4,
+//     termsSubject: mockTermsSubject[2],
+//   },
+// ];

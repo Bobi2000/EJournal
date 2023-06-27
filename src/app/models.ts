@@ -1,14 +1,21 @@
 export interface StudentModel {
   id: number;
   egn: string;
+  name: string;
   class: ClassModel;
-  user: UserModel;
+  userId: number;
+  schoolClassId: number;
 }
 
 export interface ClassModel {
   id: number;
   name: string;
-  school: SchoolModel;
+  schoolId: number;
+  students: StudentModel[];
+  subjects: SubjectModel[];
+  teachers: UserModel[];
+  marks: MarksModel[];
+  absences: [];
 }
 
 export interface SchoolModel {
@@ -16,6 +23,7 @@ export interface SchoolModel {
   name: string;
   address: string;
   principalId: number;
+  schoolClasses: ClassModel[];
 }
 
 export interface MarksModel {
@@ -51,26 +59,26 @@ export interface UserModell {
   roles: string[];
   email: string;
   password?: string;
+  children: StudentModel[];
 }
-
 export interface StudentParentsModel {
   id: number;
   student: StudentModel;
-  parent: UserModel;
+  parent: UserModell;
 }
 
 export interface TermsSubjectModel {
   id: number;
   term: TermsModel;
   subject: SubjectModel;
-  user: UserModel;
+  user: UserModell;
   class: ClassModel;
 }
 
 export enum UserType {
-  ADMIN = 'Admin',
-  PRINCIPAL = 'Principal',
-  TEACHER = 'Teacher',
-  PARENT = 'Parent',
-  STUDENT = 'Student',
+  ADMIN = 'ADMIN',
+  PRINCIPAL = 'PRINCIPAL',
+  TEACHER = 'TEACHER',
+  PARENT = 'PARENT',
+  STUDENT = 'STUDENT',
 }

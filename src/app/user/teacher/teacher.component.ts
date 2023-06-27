@@ -1,6 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TermsModel, TermsSubjectModel, UserModel } from '../../models';
-import { mockTermsSubject } from '../../mocks.model';
+import {
+  ClassModel,
+  StudentModel,
+  SubjectModel,
+  TermsModel,
+  UserModell,
+} from '../../models';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -9,34 +14,41 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./teacher.component.css'],
 })
 export class TeacherComponent implements OnInit {
-  @Input() currentTeacher: UserModel;
-  mockTerms: TermsModel[] = [];
-  mockTermsSubject: TermsSubjectModel[] = [];
+  @Input() currentTeacher: UserModell;
+  terms: TermsModel[] = [];
   selectedTerm: string = '';
+  subjects: SubjectModel[];
+  schoolClasses: ClassModel[];
+  students: StudentModel[];
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    mockTermsSubject.find((dataTermsSubject) => {
-      if (
-        dataTermsSubject.user.id === this.currentTeacher.id &&
-        !this.mockTerms.includes(dataTermsSubject.term)
-      ) {
-        this.mockTerms.push(dataTermsSubject.term);
-      }
-    });
-    this.selectedTerm = this.mockTerms[this.mockTerms.length - 1].name;
-    mockTermsSubject.find((dataTermsSubject) => {
-      if (dataTermsSubject.term.name === this.selectedTerm) {
-        this.mockTermsSubject.push(dataTermsSubject);
-      }
+    this.userService.getAllTerms().subscribe((terms) => {
+      this.terms = terms;
+      this.selectedTerm = this.terms[this.terms.length - 1]?.name;
+      this.onTermsChange();
     });
   }
   onTermsChange() {
-    this.mockTermsSubject = [];
-    mockTermsSubject.find((dataTermsSubject) => {
-      if (dataTermsSubject.term.name === this.selectedTerm) {
-        this.mockTermsSubject.push(dataTermsSubject);
-      }
+    this.userService.getAllSchools().subscribe((schools) => {
+      schools.forEach((school) => {
+        school.schoolClasses.forEach((schoolClass) => {
+          schoolClass.teachers.forEach((teacher) => {
+            if (teacher.id === this.currentTeacher.id) {
+              const selectedObject = this.terms.find(
+                (term) => term?.name === this.selectedTerm
+              );
+              this.userService
+                .getAllSubjectsByTermId(selectedObject.id)
+                .subscribe((subjects) => {
+                  this.subjects = subjects;
+                  this.schoolClasses = school.schoolClasses;
+                  this.students = schoolClass.students;
+                });
+            }
+          });
+        });
+      });
     });
   }
 }

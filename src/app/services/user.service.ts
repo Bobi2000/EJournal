@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {
+  SchoolModel,
   StudentModel,
+  SubjectModel,
   TermsModel,
   TermsSubjectModel,
-  UserModel,
   UserModell,
 } from '../models';
-import { mockTermsSubject } from '../mocks.model';
+import { ParentComponent } from '../user/parent/parent.component';
 
 @Injectable({
   providedIn: 'root',
@@ -43,9 +44,19 @@ export class UserService {
     return this.httpClient.delete<any>(`/v1/users/${id}`);
   }
 
-  // getAllSubjectsByTermId(): Observable<TermsModel> {
-  //   return this.httpClient.get<TermsModel[]>('v1/terms');
-  // }
+  getAllSubjectsByTermId(termId: number): Observable<SubjectModel[]> {
+    return this.httpClient.get<SubjectModel[]>(
+      'v1/terms/' + termId + '/subjects'
+    );
+  }
+
+  getAllSchools(): Observable<SchoolModel[]> {
+    return this.httpClient.get<SchoolModel[]>('v1/schools');
+  }
+
+  getStudentsParent(id: number): Observable<UserModell[]> {
+    return this.httpClient.get<UserModell[]>('/v1/students/' + id + '/parents');
+  }
 
   private saveUserState(userState: any): void {
     localStorage.setItem('userState', JSON.stringify(userState));

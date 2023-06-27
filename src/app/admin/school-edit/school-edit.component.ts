@@ -11,12 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./school-edit.component.scss'],
 })
 export class SchoolEditComponent {
-  school: SchoolModel = {
-    id: 0,
-    name: '',
-    address: '',
-    principalId: 0,
-  };
+  school: SchoolModel;
   principals: UserModell[] = [];
 
   constructor(

@@ -3,9 +3,9 @@
 
   <div class="card col-md-6 mb-3">
     <div class="card-body">
-      <h5 class="card-title">{{ currentStudent.user.name }}</h5>
-      <p class="card-text">Клас: {{ currentStudent.class.name }}</p>
-      <p class="card-text">Имейл: {{ currentStudent.user.email }}</p>
+      <h5 class="card-title">{{ currentStudent?.name }}</h5>
+      <p class="card-text">ЕГН: {{ currentStudent?.egn }}</p>
+      <p class="card-text">Имейл: {{ userInfo?.email }}</p>
     </div>
   </div>
   <br />
@@ -20,10 +20,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let mark of mockMarks">
+      <tr >
         <td></td>
-        <td>{{ mark.termsSubject.subject.name }}</td>
-        <td>{{ mark.mark }}</td>
+<!--        <td>{{ mark.termsSubject.subject.name }}</td>-->
+<!--        <td>{{ mark.mark }}</td>-->
         <td></td>
       </tr>
     </tbody>

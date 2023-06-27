@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { StudentModel, TermsModel, UserModel, UserType } from '../models';
+import { StudentModel, TermsModel, UserModell, UserType } from '../models';
 import { UserService } from '../services/user.service';
 import { mockUsers } from '../mocks.model';
 
@@ -10,43 +10,43 @@ import { mockUsers } from '../mocks.model';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  currentUser: UserModel = {
-    id: 1,
-    name: 'Мария Петрова',
-    type: UserType.PARENT,
-    email: 'mariya.petrova@mail.com',
-    password: 'test',
-  };
-  // terms: TermsModel[] = [];
-  // children: StudentModel[] = [];
+  currentUser: UserModell;
+  isStudent: boolean = false;
+  isParent: boolean = false;
+  isTeacher: boolean = false;
+  isPrincipal: boolean = false;
+  isAdmin: boolean = false;
+  terms: TermsModel[] = [];
+  children: StudentModel[] = [];
 
   constructor(
-    private activatedRoute: ActivatedRoute // private userService: UserService
+    private activatedRoute: ActivatedRoute,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    mockUsers.find((data) => {
-      if (data.id === Number(id)) {
-        this.currentUser = data;
-      }
+    this.userService.getUserById(Number(id)).subscribe((user) => {
+      this.currentUser = user;
+      this.currentUser.roles.forEach((role) => {
+        this.isStudent = role === UserType.STUDENT;
+        this.isParent = role === UserType.PARENT;
+        this.isTeacher = role === UserType.TEACHER;
+        this.isPrincipal = role === UserType.PRINCIPAL;
+        this.isAdmin = role === UserType.ADMIN;
+      });
+      // if (this.isTeacher) {
+      //   // this.userService.getAllSubjectsByTermId().subscribe((terms) => {
+      //   // console.log();
+      //   // terms.find((term) => {
+      //   //   if (!this.terms.includes(term)) {
+      //   //     this.terms.push(dataTermsSubject.term);
+      //   //   }
+      //   // });
+      //   // this.terms = [...terms];
+      //   // });
+      // } else if (this.isParent) {
+      // }
     });
-    // this.userService.getUserById(Number(id)).subscribe((user) => {
-    //   this.currentUser = user;
-    //   if (this.currentUser.type === UserType.TEACHER) {
-    //     // this.userService.getAllTermsSubjects().subscribe((terms) => {
-    //     //   terms.find((term) => {
-    //     //     if (
-    //     //       term.user.id === this.currentUser.id &&
-    //     //       !this.terms.includes(term.term)
-    //     //     ) {
-    //     //       this.mockTerms.push(dataTermsSubject.term);
-    //     //     }
-    //     //   });
-    //     // this.terms = [...terms];
-    //     // });
-    //   } else if (this.currentUser.type === UserType.PARENT) {
-    //   }
-    // });
   }
 }
