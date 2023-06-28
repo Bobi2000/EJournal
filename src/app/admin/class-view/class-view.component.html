@@ -1,0 +1,122 @@
+<div class="container">
+  <h2>School Class Details</h2>
+  <h3>{{ schoolClass?.name }}</h3>
+  <div class="row">
+    <div class="col-md-8">
+      <h5>Students</h5>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-primary" [routerLink]="['/admin/student-add', id]">
+        Add Student
+      </button>
+    </div>
+  </div>
+
+  <h3>All students</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="schoolClass">
+      <tr *ngFor="let student of schoolClass.students">
+        <td>
+          <span [routerLink]="['/user/student/', student.id]">
+            {{ student.name }}</span
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="terms">
+    <div *ngFor="let term of terms">
+      <h2>{{ term.name }}</h2>
+
+      <button
+        class="btn btn-primary"
+        [routerLink]="['/admin/subject-add-term/', term.id]"
+      >
+        Add Subject
+      </button>
+      <div *ngFor="let subjects of term.subjects">
+        <h5>{{ subjects.subject }}</h5>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Marks</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody *ngIf="schoolClass">
+            <tr *ngFor="let student of schoolClass.students">
+              <td>
+                {{ student.name }}
+              </td>
+              <td>{{ marksMap[student.id] }}</td>
+
+              <td>
+                <Input />
+                <button class="btn btn-primary" (click)="onMark(student.id)">
+                  Mark
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Terms</th>
+        <th>Subjects</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngIf="terms">
+      <tr *ngFor="let term of terms">
+        <td>{{ term.name }}</td>
+        <td>{{ term.subjects.join(", ") }}</td>
+        <td>
+          <button class="btn btn-primary">Add</button>
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+  <!-- <table class="table table-striped">
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <td>{{ schoolClass?.name }}</td>
+      </tr>
+      <tr>
+        <th>Students</th>
+        <td>{{ schoolClass?.students?.length }}</td>
+      </tr>
+      <tr>
+        <th>Subjects</th>
+        <td>{{ schoolClass?.subjects?.length }}</td>
+      </tr>
+      <tr>
+        <th>Teachers</th>
+        <td>{{ schoolClass?.teachers?.length }}</td>
+      </tr>
+      <tr>
+        <th>Marks</th>
+        <td>{{ schoolClass?.marks?.length }}</td>
+      </tr>
+      <tr>
+        <th>Absences</th>
+        <td>{{ schoolClass?.absences?.length }}</td>
+      </tr>
+    </tbody>
+  </table> -->
+</div>

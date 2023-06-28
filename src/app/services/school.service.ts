@@ -28,4 +28,28 @@ export class SchoolService {
   public deleteSchool(id: number): Observable<any> {
     return this.http.delete<any>(`v1/schools/${id}`);
   }
+
+  public postTerm(body: any): Observable<any> {
+    return this.http.post<any>(`v1/terms`, body);
+  }
+
+  public getAllTerms(): Observable<any> {
+    return this.http.get<any>(`v1/terms`);
+  }
+
+  public getAllSchoolClasses(): Observable<any> {
+    return this.http.get<any>(`v1/school-classes`);
+  }
+
+  public postSchoolClass(body): Observable<any> {
+    return this.http.post<any>(`v1/school-classes`, body);
+  }
+
+  public getSchoolClass(id: number): Observable<any> {
+    return this.http.get<any>(`v1/school-classes/${id}`);
+  }
+
+  // public postSubjectToTerm(id: number, subject_id: number): Observable<any> {
+  //   return this.http.post<any>(`v1/terms/${}/subjects/${}`, null);
+  // }
 }

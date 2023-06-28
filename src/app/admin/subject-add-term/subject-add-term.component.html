@@ -1,0 +1,23 @@
+<div class="container">
+  <h1 class="mt-4 mb-3">Add Subject</h1>
+
+  <form [formGroup]="studentForm" (ngSubmit)="onStudentCreate()">
+    <div class="form-group pb-3">
+      <label for="principal">Subject</label>
+      <select
+        formControlName="userId"
+        class="form-control"
+        id="student"
+        name="student"
+        required
+      >
+        <option value="" disabled selected>Select Subject</option>
+        <option *ngFor="let student of students" [value]="student.id">
+          {{ student.name }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Subject</button>
+  </form>
+</div>

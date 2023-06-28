@@ -82,3 +82,13 @@ export enum UserType {
   PARENT = 'PARENT',
   STUDENT = 'STUDENT',
 }
+
+export const terms = [
+  {
+    id: 1,
+    classId: 1,
+    name: 'Term1',
+    subjects: [],
+  },
+  { id: 2, classId: 1, name: 'Term2', subjects: [] },
+];

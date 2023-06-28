@@ -28,6 +28,10 @@ export class UserService {
     return this.httpClient.get<UserModell[]>('/v1/users');
   }
 
+  gettAllSubjects(): Observable<any[]> {
+    return this.httpClient.get<any[]>('/v1/subjects')
+  }
+
   getUserById(id: number): Observable<UserModell> {
     return this.httpClient.get<UserModell>('/v1/users/' + id);
   }

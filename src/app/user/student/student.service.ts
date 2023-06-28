@@ -12,4 +12,8 @@ export class StudentService {
   getStudentById(id: number): Observable<StudentModel> {
     return this.httpClient.get<StudentModel>('v1/students/' + id);
   }
+
+  postStudent(body: any): Observable<any> {
+    return this.httpClient.post<any>('v1/students', body);
+  }
 }

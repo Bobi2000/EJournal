@@ -1,5 +1,8 @@
 <div class="container">
   <h2>School Details</h2>
+  <!-- <button class="btn btn-primary" [routerLink]="['/admin/term-add/', id]">
+    Add Term
+  </button> -->
   <table class="table table-striped">
     <thead>
       <tr>
@@ -34,4 +37,59 @@
       </tr>
     </tbody>
   </table>
+
+  <button class="btn btn-primary" [routerLink]="['/admin/class-add/', id]">
+    Create Class
+  </button>
+
+  <div class="">
+    <h2>School Classes</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let schoolClass of schoolClasses">
+          <td>{{ schoolClass.name }}</td>
+          <button
+            class="btn btn-secondary text-black"
+            [routerLink]="['/admin/class-view', schoolClass.id]"
+          >
+            View
+          </button>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- <h2>Term Details</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Abbreviation</th>
+        <th>Subjects</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let term of terms">
+        <td>{{ term.name }}</td>
+        <td>{{ term.abbreviation }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let subject of term.subjects">
+              {{ subject.name }} ({{ subject.abbreviation }})
+            </li>
+          </ul>
+        </td>
+        <td>
+          <button class="btn btn-primary" (click)="addSubjectToTerm(term)">Add Subject</button>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
 </div>

@@ -9,6 +9,12 @@ import { UsersViewComponent } from './users-view/users-view.component';
 import { UsersEditComponent } from './users-edit/users-edit.component';
 import { SubjectsViewComponent } from './subjects-view/subjects-view.component';
 import { SubjectsAddComponent } from './subjects-add/subjects-add.component';
+import { TermAddComponent } from './term-add/term-add.component';
+import { ClassAddComponent } from './class-add/class-add.component';
+import { ClassViewComponent } from './class-view/class-view.component';
+import { UserAddComponent } from './user-add/user-add.component';
+import { StudentAddComponent } from './student-add/student-add.component';
+import { SubjectAddTermComponent } from './subject-add-term/subject-add-term.component';
 
 const routes: Routes = [
   {
@@ -22,6 +28,12 @@ const routes: Routes = [
   { path: 'user-edit/:id', component: UsersEditComponent },
   { path: 'subjects-view', component: SubjectsViewComponent },
   { path: 'subject-add', component: SubjectsAddComponent },
+  { path: 'term-add/:id', component: TermAddComponent },
+  { path: 'class-add/:id', component: ClassAddComponent },
+  { path: 'class-view/:id', component: ClassViewComponent },
+  { path: 'user-add', component: UserAddComponent },
+  { path: 'student-add/:id', component: StudentAddComponent },
+  { path: 'subject-add-term/:id', component: SubjectAddTermComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>Create Term</h2>
+  <form [formGroup]="termForm" (ngSubmit)="onTermCreate()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        formControlName="name"
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        required
+      />
+    </div>
+
+    <div class="form-group pb-3">
+      <label for="abbreviation">Abbreviation</label>
+      <input
+        formControlName="abbreviation"
+        type="text"
+        class="form-control"
+        id="abbreviation"
+        name="abbreviation"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+</div>

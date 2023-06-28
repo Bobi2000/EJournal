@@ -1,0 +1,19 @@
+<div class="container">
+  <h1 class="mt-4 mb-3">Add Class</h1>
+
+  <form [formGroup]="classForm" (ngSubmit)="onClassCreate()">
+    <div class="form-group pb-3">
+      <label for="name">Name</label>
+      <input
+        formControlName="name"
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Crete Class</button>
+  </form>
+</div>

@@ -36,9 +36,7 @@ export class UsersEditComponent implements OnInit {
     const roles: string = this.user.roles;
     this.user.roles = roles.split(' ');
 
-    console.log(this.user);
     this.userService.postUser(this.user).subscribe((user: any) => {
-      console.log(user);
       this.router.navigate([`/admin/users-view/`]);
     });
   }
